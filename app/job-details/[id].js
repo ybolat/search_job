@@ -1,4 +1,4 @@
-import {ActivityIndicator, RefreshControl, SafeAreaView, ScrollView, Text, View} from "react-native";
+import {ActivityIndicator, Alert, RefreshControl, SafeAreaView, ScrollView, Text, View, Share} from "react-native";
 import {Stack, useRouter, useSearchParams} from "expo-router";
 import useFetch from "../../hook/useFetch";
 import {COLORS, icons, SIZES} from "../../constants";
@@ -23,6 +23,17 @@ const JobDetails = () => {
         refetch();
         setRefreshing(false);
     }, []);
+
+    const handleShare = async () => {
+        try {
+            await Share.share({
+                message: data[0]?.job_google_link ?? 'https://careers.google.com/jobs/results'
+            });
+        } catch (error) {
+            Alert.alert('Something went wrong, please try again.');
+            console.log(error);
+        }
+    }
 
     const displayTabContent = () => {
         switch (activeTab) {
@@ -54,7 +65,9 @@ const JobDetails = () => {
                     ),
                     headerRight: () => (
                         <ScreenHeaderBtn iconUrl={icons.share}
-                                         dimension={"60%"}/>
+                                         dimension={"60%"}
+                                         handlePress={handleShare}
+                        />
                     ),
                     headerTitle: ''
                 }}/>
