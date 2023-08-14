@@ -15,6 +15,10 @@ const Home = () => {
         }
     }
 
+    const handleClickProfile = () => {
+        router.push('/profile');
+    }
+
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightWhite}}>
             <Stack.Screen
@@ -25,7 +29,7 @@ const Home = () => {
                         <ScreenHeaderBtn iconUrl={icons.menu} dimension='60%'/>
                     ),
                     headerRight: () => (
-                        <ScreenHeaderBtn iconUrl={images.profile} dimension='100%'/>
+                        <ScreenHeaderBtn iconUrl={images.profile} dimension='100%' handlePress={handleClickProfile}/>
                     ),
                     headerTitle: "",
                 }}

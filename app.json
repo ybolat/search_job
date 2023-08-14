@@ -5,6 +5,34 @@
       "bundler": "metro"
     },
     "name": "jobs",
-    "slug": "jobs"
+    "slug": "jobs",
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Location This app requires location in the background",
+        "NSLocationAlwaysUsageDescription": "[Location] This app requires location while in use",
+        "NSLocationUsageDescription": "Location This app uses motion-detection to determine the motion-activity of the device (walking, vehicle, bicycle, etc)",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Location This app requires location in the background",
+        "UIBackgroundModes": [
+          "location",
+          "fetch",
+          "processing",
+          "audio"
+        ],
+        "BGTaskSchedulerPermittedIdentifiers": [
+          "com.transistorsoft.fetch",
+          "com.transistorsoft.customtask"
+        ]
+      },
+      "bundleIdentifier": "com.ybolat.jobs"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "70a8ca56-223f-4b10-8219-03fb1571d557"
+      }
+    },
+    "android": {
+      "package": "com.ybolat.jobs"
+    }
   }
 }
